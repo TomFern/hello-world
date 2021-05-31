@@ -5,9 +5,30 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 'Block #1'
+  - name: Say hi
     task:
+      jobs:
+        - name: make hi
+          commands:
+            - checkout
+            - make hi
+  - name: Parallel Jobs
+    task:
+      env_vars:
+        - name: HELLO
+          value: 'hello, world'
       jobs:
         - name: 'Job #1'
           commands:
-            - checkout
+            - echo $HELLO from job 1
+        - name: 'Job #2'
+          commands:
+            - echo $HELLO from job 2
+        - name: 'Job #3'
+          commands:
+            - echo $HELLO from job 3
+promotions:
+  - name: Promotion 1
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
