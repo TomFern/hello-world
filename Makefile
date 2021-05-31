@@ -1,0 +1,2 @@
+hi:
+	echo "Hello world"
