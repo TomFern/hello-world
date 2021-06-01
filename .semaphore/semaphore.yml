@@ -35,6 +35,7 @@ blocks:
           commands:
             - checkout
             - sem-service start postgres
+            - psql -U postgres -c "SELECT version()"
 promotions:
   - name: Promotion 1
     pipeline_file: pipeline_2.yml
