@@ -12,3 +12,4 @@ blocks:
           commands:
             - checkout
             - make deploy
+            - '# add a secret'

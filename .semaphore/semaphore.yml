@@ -21,12 +21,20 @@ blocks:
         - name: 'Job #1'
           commands:
             - echo $HELLO from job 1
+            - sem-version ruby 2.7
+            - ruby --version
         - name: 'Job #2'
           commands:
             - echo $HELLO from job 2
-        - name: 'Job #3'
+            - sem-version node 14.17
+            - node --version
+  - name: 'Block #3'
+    task:
+      jobs:
+        - name: Db job
           commands:
-            - echo $HELLO from job 3
+            - checkout
+            - sem-service start postgres
 promotions:
   - name: Promotion 1
     pipeline_file: pipeline_2.yml
