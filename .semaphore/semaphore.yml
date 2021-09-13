@@ -21,11 +21,11 @@ blocks:
         - name: "Linting \U0001F50E"
           commands:
             - 'true'
-            - sleep 10
+            - sleep 1
         - name: "Unit tests \U0001F52C"
           commands:
             - 'true'
-            - sleep 10
+            - sleep 2
   - name: Slow tests
     dependencies:
       - Fast tests
