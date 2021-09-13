@@ -13,39 +13,27 @@ blocks:
           commands:
             - 'true'
             - sleep 10
-  - name: "Linting \U0001F50E"
+  - name: Fast tests
     dependencies:
       - Build project ⚙️
     task:
       jobs:
-        - name: Run test
+        - name: "Linting \U0001F50E"
           commands:
             - 'true'
             - sleep 10
-  - name: "Unit tests \U0001F52C"
+        - name: "Unit tests \U0001F52C"
+          commands:
+            - 'true'
+            - sleep 10
+  - name: Slow tests
     dependencies:
-      - "Linting \U0001F50E"
+      - Fast tests
     task:
       jobs:
-        - name: Run test
+        - name: "Integration Tests \U0001F91D"
           commands:
             - 'true'
             - sleep 10
-  - name: "Integration Tests \U0001F91D"
-    dependencies:
-      - "Unit tests \U0001F52C"
-    task:
-      jobs:
-        - name: Run test
-          commands:
-            - 'true'
-            - sleep 10
-  - name: "Security Test \U0001F6E1️"
-    dependencies:
-      - "Integration Tests \U0001F91D"
-    task:
-      jobs:
-        - name: Run test
-          commands:
-            - 'true'
-            - sleep 10
+        - name: "Security Test \U0001F6E1️"
+          commands: []
