@@ -12,6 +12,7 @@ blocks:
         - name: Build
           commands:
             - 'true'
+            - sleep 10
   - name: "Linting \U0001F50E"
     dependencies:
       - Build project ⚙️
@@ -20,6 +21,7 @@ blocks:
         - name: Run test
           commands:
             - 'true'
+            - sleep 10
   - name: "Unit tests \U0001F52C"
     dependencies:
       - "Linting \U0001F50E"
@@ -28,6 +30,7 @@ blocks:
         - name: Run test
           commands:
             - 'true'
+            - sleep 10
   - name: "Integration Tests \U0001F91D"
     dependencies:
       - "Unit tests \U0001F52C"
@@ -36,6 +39,7 @@ blocks:
         - name: Run test
           commands:
             - 'true'
+            - sleep 10
   - name: "Security Test \U0001F6E1️"
     dependencies:
       - "Integration Tests \U0001F91D"
@@ -44,3 +48,4 @@ blocks:
         - name: Run test
           commands:
             - 'true'
+            - sleep 10
