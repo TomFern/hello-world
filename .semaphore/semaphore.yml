@@ -5,18 +5,42 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Regression tests
+  - name: Build project ⚙️
+    dependencies: []
     task:
       jobs:
-        - name: Unit tests
+        - name: Build
           commands:
             - 'true'
-          matrix:
-            - env_var: JAVA_VERSION
-              values:
-                - '1.8'
-                - '11.0'
-            - env_var: APP_VERSION
-              values:
-                - '2.1'
-                - '3.0'
+  - name: "Linting \U0001F50E"
+    dependencies:
+      - Build project ⚙️
+    task:
+      jobs:
+        - name: Run test
+          commands:
+            - 'true'
+  - name: "Unit tests \U0001F52C"
+    dependencies:
+      - "Linting \U0001F50E"
+    task:
+      jobs:
+        - name: Run test
+          commands:
+            - 'true'
+  - name: "Integration Tests \U0001F91D"
+    dependencies:
+      - "Unit tests \U0001F52C"
+    task:
+      jobs:
+        - name: Run test
+          commands:
+            - 'true'
+  - name: "Security Test \U0001F6E1️"
+    dependencies:
+      - "Integration Tests \U0001F91D"
+    task:
+      jobs:
+        - name: Run test
+          commands:
+            - 'true'
