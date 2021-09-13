@@ -5,25 +5,21 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 'Block #1'
+  - name: Regression tests
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Unit tests
           commands:
-            - checkout
-  - name: 'Block #2'
-    task:
-      jobs:
-        - name: 'Job #1'
-          commands:
-            - checkout
-            - sem-version ruby 2.7
-        - name: 'Job #2'
-          commands:
-            - checkout
-            - sem-version node 14.18
-            - sem-service start postgres
-            - psql -U postgres -c "select version()"
+            - 'true'
+          matrix:
+            - env_var: JAVA_VERSION
+              values:
+                - '1.8'
+                - '11.0'
+            - env_var: APP_VERSION
+              values:
+                - '2.1'
+                - '3.0'
 promotions:
   - name: Promotion 1
     pipeline_file: pipeline_2.yml
