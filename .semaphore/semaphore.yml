@@ -5,35 +5,10 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Build project ⚙️
+  - name: "Tests \U0001F52C"
     dependencies: []
     task:
       jobs:
-        - name: Build
+        - name: Tests 1 to 3
           commands:
-            - 'true'
-            - sleep 10
-  - name: Fast tests
-    dependencies:
-      - Build project ⚙️
-    task:
-      jobs:
-        - name: "Linting \U0001F50E"
-          commands:
-            - 'true'
-            - sleep 1
-        - name: "Unit tests \U0001F52C"
-          commands:
-            - 'true'
-            - sleep 2
-  - name: Slow tests
-    dependencies:
-      - Fast tests
-    task:
-      jobs:
-        - name: "Integration Tests \U0001F91D"
-          commands:
-            - 'true'
-            - sleep 10
-        - name: "Security Test \U0001F6E1️"
-          commands: []
+            - sleep 35
