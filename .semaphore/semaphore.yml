@@ -9,6 +9,9 @@ blocks:
     dependencies: []
     task:
       jobs:
-        - name: Tests 1 to 3
+        - name: Test 1
           commands:
-            - sleep 35
+            - sleep 21
+        - name: Tests 2 & 3
+          commands:
+            - sleep 17
